@@ -16,14 +16,15 @@ use App\Http\Controllers\DetailsController;
 
 
 Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDetails']);
-Route::post('/details',[App\Http\Controllers\DetailsController::class, 'createDetail']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
-Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
-Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
-Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
+Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
-   
+    
+    Route::post('/details',[App\Http\Controllers\DetailsController::class, 'createDetail']);
+    Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
+    Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
+    Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
+    
 });
