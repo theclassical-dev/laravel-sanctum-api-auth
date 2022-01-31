@@ -14,14 +14,16 @@ use App\Http\Controllers\DetailsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDetails']);
 Route::post('/details',[App\Http\Controllers\DetailsController::class, 'createDetail']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
-Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
 Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
 Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
 Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
+   
+});
