@@ -22,5 +22,6 @@ Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDet
 Route::post('/details',[App\Http\Controllers\DetailsController::class, 'createDetail']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
 Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
-Route::get('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
+Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
 Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
+Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);

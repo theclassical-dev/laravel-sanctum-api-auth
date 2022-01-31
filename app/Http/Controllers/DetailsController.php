@@ -51,4 +51,12 @@ class DetailsController extends Controller
             'success' => $d,
         ];
     }
+
+    public function deleteAll(Detail $detial) {
+        $d = $detial->truncate();
+
+        return [
+            'success' => $d,
+        ];
+    }
 }
