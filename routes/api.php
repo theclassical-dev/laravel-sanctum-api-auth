@@ -16,6 +16,7 @@ use App\Http\Controllers\Authcontroller;
 */
 
 Route::post('/register',[App\Http\Controllers\Authcontroller::class, 'register']);
+Route::post('/login',[App\Http\Controllers\Authcontroller::class, 'login']);
 
 Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDetails']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);

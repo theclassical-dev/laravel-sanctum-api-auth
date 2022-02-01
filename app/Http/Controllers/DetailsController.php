@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Detail;
+use Illuminate\Http\Response;
+
 
 class DetailsController extends Controller
 {
     public function getAllDetails(Request $request){
         $details = Detail::all();
-        if($details != null) {
-            return $details;
+        if($details->isEmpty()) {
+            return response( ['message' => 'no details'], 200);
         }else{
-            return ["no details"];
+            return $details;
         }
     }
 
