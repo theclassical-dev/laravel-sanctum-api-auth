@@ -50,7 +50,7 @@ class DetailsController extends Controller
         $d->delete($id);
         return [
             
-            'success' => $d,
+            'message' => 'Details has been deleted',
         ];
     }
 
@@ -58,7 +58,7 @@ class DetailsController extends Controller
         $d = $detial->truncate();
 
         return [
-            'success' => $d,
+            'message' => 'All Details Has Been Deleted From The Datebase',
         ];
     }
 }
