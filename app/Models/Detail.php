@@ -10,4 +10,8 @@ class Detail extends Model
     use HasFactory;
 
     protected $fillable = ['name','state','address'];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
 }

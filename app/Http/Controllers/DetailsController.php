@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Detail;
 use Illuminate\Http\Response;
+use Auth;
 
 
 class DetailsController extends Controller
@@ -23,9 +24,10 @@ class DetailsController extends Controller
             'name' => 'required',
             'state' => 'required',
             'address' => 'required',
+            // 'user_id' => 'required',
         ]);
 
-          return Detail::create($request->all());
+          return Detail::create($request->all(), Auth::user()->id);
     }
 
     public function getDetail($id){
