@@ -23,6 +23,7 @@ Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDet
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
 Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
 Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
+Route::get('/getAllImage', [App\Http\Controllers\UploadController::class, 'getImages']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 

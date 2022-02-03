@@ -9,7 +9,11 @@ use App\Models\Upload;
 
 class UploadController extends Controller
 {
-    public function uploadold(Request $request){
+    public function getImages(){
+        return Upload::all();
+    }
+
+    public function uploadSingle(Request $request){
 
         $request->validate([
             'image' => 'required',
@@ -45,4 +49,5 @@ class UploadController extends Controller
             'image' => implode('|', $imgName),
         ]);
     }
+
 }
