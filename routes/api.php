@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,7 +22,7 @@ Route::post('/login',[App\Http\Controllers\Authcontroller::class, 'login']);
 Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDetails']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
 Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
-
+Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
