@@ -9,7 +9,7 @@ use App\Models\Upload;
 
 class UploadController extends Controller
 {
-    public function upload(Request $request){
+    public function uploadold(Request $request){
 
         $request->validate([
             'image' => 'required',
@@ -23,6 +23,26 @@ class UploadController extends Controller
 
         return Upload::create([
             'image' => $file,
+        ]);
+    }
+
+    public function upload(Request $request){
+
+        $imgs = $request->file('image');
+        $imgName = array();
+
+        if($request->hasFile('image')){
+
+           foreach($imgs as $img){
+            $file = rand().'.'.$img->getClientOriginalExtension();
+            $img->storeAs('uploads',$file, 'public');
+            $imgName[] = $file;
+            } 
+        }
+        
+        $imgDb = $imgName;
+        return Upload::create([
+            'image' => implode('|', $imgName),
         ]);
     }
 }
