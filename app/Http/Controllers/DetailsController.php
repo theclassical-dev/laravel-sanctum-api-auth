@@ -24,10 +24,15 @@ class DetailsController extends Controller
             'name' => 'required',
             'state' => 'required',
             'address' => 'required',
-            // 'user_id' => 'required',
         ]);
+          return Detail::create([
+              'name' => request('name'),
+              'state' => request('state'),
+              'address' => request('address'),
+              'user_id' => auth()->user()->id,
+          ]);
 
-          return Detail::create($request->all(), Auth::user()->id);
+        // return dd(auth()->user()->id);
     }
 
     public function getDetail($id){
