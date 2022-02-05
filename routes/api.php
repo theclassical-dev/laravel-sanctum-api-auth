@@ -22,7 +22,6 @@ Route::post('/login',[App\Http\Controllers\Authcontroller::class, 'login']);
 Route::get('/details',[App\Http\Controllers\DetailsController::class, 'getAllDetails']);
 Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getDetail']);
 Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
-Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
 Route::get('/getAllImage', [App\Http\Controllers\UploadController::class, 'getImages']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -31,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
     Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
     Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
+    Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
+    Route::delete('/upload/dUpdate/{id}', [App\Http\Controllers\UploadController::class, 'dUpdate']);
     Route::post('/logout',[App\Http\Controllers\Authcontroller::class, 'logout']);
-
-    
 });
