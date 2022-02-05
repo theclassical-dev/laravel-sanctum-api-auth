@@ -12,4 +12,16 @@ class UserController extends Controller
     public function index(){
         return Auth::user()->upload;
     }
+
+    public function getDetails(){
+        $user = Auth::user()->detail;
+
+        if($user->isEmpty()){
+            
+            return [
+                'message' => 'no details'
+            ];
+        }
+        return $user;
+    }
 }
