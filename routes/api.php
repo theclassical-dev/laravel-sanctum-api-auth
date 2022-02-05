@@ -25,15 +25,16 @@ Route::get('/details/{id}',[App\Http\Controllers\DetailsController::class, 'getD
 Route::get('/details/search/{name}',[App\Http\Controllers\DetailsController::class, 'searchDetail']);
 Route::get('/getAllImage', [App\Http\Controllers\UploadController::class, 'getImages']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
 
-    Route::post('/details',[App\Http\Controllers\DetailsController::class, 'createDetail']);
-    Route::put('/details/update/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
-    Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
-    Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
+    Route::post('/createdetails',[App\Http\Controllers\DetailsController::class, 'createDetail']);
+    Route::put('/updatedetails/{id}',[App\Http\Controllers\DetailsController::class, 'updateDetail']);
+    // Route::delete('/details/delete/{id}',[App\Http\Controllers\DetailsController::class, 'deleteDetail']);
+    // Route::delete('/details/deleteall',[App\Http\Controllers\DetailsController::class, 'deleteAll']);
     Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
-    Route::delete('/upload/dUpdate/{id}', [App\Http\Controllers\UploadController::class, 'dUpdate']);
     Route::post('/logout',[App\Http\Controllers\Authcontroller::class, 'logout']);
-    Route::get('/user/upload', [App\Http\Controllers\UserController::class, 'index']);
-    Route::get('/user/details', [App\Http\Controllers\UserController::class, 'getDetails']);
+    Route::get('/upload', [App\Http\Controllers\UserController::class, 'index']);
+    Route::get('/details', [App\Http\Controllers\UserController::class, 'getDetails']);
+    Route::delete('/deleteupload/{id}', [App\Http\Controllers\UserController::class, 'dUpload']);
+
 });
