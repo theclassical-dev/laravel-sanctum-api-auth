@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,4 +34,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/upload', [App\Http\Controllers\UploadController::class, 'upload']);
     Route::delete('/upload/dUpdate/{id}', [App\Http\Controllers\UploadController::class, 'dUpdate']);
     Route::post('/logout',[App\Http\Controllers\Authcontroller::class, 'logout']);
+    Route::get('/user/upload', [App\Http\Controllers\UserController::class, 'index']);
 });
