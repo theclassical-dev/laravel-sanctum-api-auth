@@ -30,37 +30,20 @@ class UserController extends Controller
     public function dUpload($id) {
 
         $d = auth()->user()->upload()->find($id);
-        if($d) {
-            $path = public_path('storage/uploads/'.$d->image);
-            $imgs = explode("|", $path);
-            Storage::delete($imgs);
 
-            return [
-                'message' => 'Deleted'
-            ];
-            
+        $path = public_path('storage/uploads/'.$d->image);
+        $imgs = explode(',', $path);
+
+        if($d){
+            foreach($imgs as $img) {
+
+                unlink($img);
+                $d->delete($img);
+                return [
+                    'message' => 'Deleted'
+                ];
+            }
         }
-
-        // if($d){
-        //     foreach($imgs as $img) {
-        //         $path = public_path('storage/uploads/'.$img);
-        //         // if($path){
-
-        //             Storge::delete($path);
-        //             $d->delete($path);
-
-        //             return [
-        //                 'message' => 'Deleted'
-        //             ];
-        //         // }
-
-        //         return [
-        //             'message' => 'not found'
-        //         ];
-                
-        //     }
-            
-        // }
 
         return [
             'message' => 'not found'

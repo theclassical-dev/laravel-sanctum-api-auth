@@ -47,7 +47,7 @@ class UploadController extends Controller
         $imgDb = $imgName;
 
         return Upload::create([
-                'image' => implode('|', $imgName),
+                'image' => implode(',', $imgName),
                 'user_id' => auth()->user()->id,
                 ]);
        
