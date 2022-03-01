@@ -49,4 +49,24 @@ class UserController extends Controller
             'message' => 'not found'
         ];
     }
+
+    public function updateUpload(Request $request, $id){
+        $d = auth()->user()->upload()->find($id);
+
+        $path = public_path('storage/uploads/'.$d->image);
+        $imgs = explode(',', $path);
+        
+        if($d){
+            foreach($imgs as $img) {
+
+                unlink($img);
+                $d->update([
+                  'image' => $path,
+                ]);
+                return [
+                    'message' => $img
+                ];
+            }
+        }
+    }
 }

@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function ()
     Route::get('/upload', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/details', [App\Http\Controllers\UserController::class, 'getDetails']);
     Route::delete('/deleteupload/{id}', [App\Http\Controllers\UserController::class, 'dUpload']);
-    // Route::put('/updateupload/{id}', [App\Http\Controllers\UserController::class, 'updateUpload']);
+    Route::put('/updateupload/{id}', [App\Http\Controllers\UserController::class, 'updateUpload']);
     
 
 });

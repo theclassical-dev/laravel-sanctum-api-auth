@@ -53,4 +53,35 @@ class UploadController extends Controller
        
     }
 
+    public function dUpload(Request $request){
+
+            $request->validate([
+                'id' => 'required',
+            ]);
+            $del = Property_Pics::find($request->id);
+            $img = explode('|', $del->image);
+            if($del){
+                foreach($img as $imgs){
+                    unlink('public/storage/uploads/'.$imgs);
+                }
+                $del->delete($del);
+                return response()->json(['message' => 'Image deleted successfully']);
+            }else{
+                return response()->json(['message' => 'Image not found']);
+
+            }
+    }
+
+
+    // for the display of the
+
+        // @php
+		// 	$d = DB::table('prop_pictures')->where('id', 1)->first();
+		// 	$ds = explode('|', $d->pictures);
+		// @endphp
+		// @foreach ($ds as $f)
+		// 	<image src="{{URL::to('public/storage/uploads/'.$f)}}" alt="" style="height: 50px; width: 50px" />
+		// 	<br>
+		// @endforeach
+
 }
